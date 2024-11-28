@@ -70,14 +70,14 @@ public class Anagram {
 		String newString = "";
 
 		for (int i = 0; i < str.length(); i++) {
-			int randomIndex = (int) (Math.random() * str.length());
-			char randomCharacter = str.charAt(randomIndex);
-			newString += randomCharacter;
-		}
-		if (isAnagram(str, newString)) {
-			return newString;
-		}
+			while (str.length() > 0) {
+				int randomIndex = (int) (Math.random() * str.length());
+				char randomCharacter = str.charAt(randomIndex);
+				newString += randomCharacter;
 
-		return newString ;
+				str = str.substring(0, randomIndex) + str.substring(randomIndex + 1);
+			}
+		}
+		return newString;
 	}
 }
