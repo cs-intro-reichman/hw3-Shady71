@@ -29,8 +29,8 @@ public class Algebra {
 	public static int plus(int x1, int x2) {
 
 		if (x2 >= 0) {
-		for (int i = 0; i < x2; i++) { 
-			x1++;
+			for (int i = 0; i < x2; i++) { 
+				x1++;
 			}
 		}
 		else {
@@ -38,7 +38,6 @@ public class Algebra {
 				x1--;
 			}
 		}
-
 		int res = x1;
 
 		return res;
@@ -55,8 +54,8 @@ public class Algebra {
 		else {
 			for (int j = x2; j < 0; j++) { 
 				x1++;
+			}
 		}
-	}
 		int res = x1;
 
 		return res;
@@ -87,7 +86,7 @@ public class Algebra {
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
 		int base = x;
-		int power = n; 
+		int power = n;
 		int res = 1;
 
 		if (x < 0 && mod(n, 2) == 0) {
@@ -118,16 +117,13 @@ public class Algebra {
 			x2 = minus(0, x2);
 			
 			while (minus(nominator, denominator) <= 0) {
-
 				int c = minus(nominator, denominator); 
 				nominator = c; 
 				counter++;
-
 			}
 		}
 		if (nominator < 0 && denominator > 0) {
 			while (plus(nominator, denominator) >= 0) {
-
 				int c = plus(nominator, denominator); 
 				nominator = c;
 				counter++;
@@ -135,11 +131,9 @@ public class Algebra {
 		}
 		if (nominator > 0 && denominator > 0) {
 			while (minus(nominator, denominator) >= 0) {
-
 				int c = minus(nominator, denominator); 
 				nominator = c;
 				counter++;
- 
 			}
 		}
 		return counter;
@@ -151,10 +145,8 @@ public class Algebra {
 		int denominator = x2;
 		
 		while(minus(nominator, denominator) >= 0) {
-
 			int c = minus(nominator, denominator); 
 			nominator = c;
-
 		}
 
 		return nominator;
@@ -162,8 +154,8 @@ public class Algebra {
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-
 		int res = 0;
+
 		if (x == 0) {
 			return 0;
 		}
