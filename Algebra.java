@@ -1,3 +1,5 @@
+import javax.tools.FileObject;
+
 // Implements algebraic operations and the square root function without using 
 // the Java operations a + b, a - b, a * b, a / b, a % b, and without calling 
 // Math.sqrt. All the functions in this class operate on int values and
@@ -25,43 +27,144 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+
+		if (x2 >= 0) {
+			for (int i = 0; i < x2; i++) { 
+				x1++;
+			}
+		}
+		else {
+			for (int j = x2; j < 0; j++) {
+				x1--;
+			}
+		}
+		int res = x1;
+
+		return res;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+
+		if (x2 >= 0) {
+			for (int i = 0; i < x2; i++) { 
+				x1--;
+			}
+		}
+		else {
+			for (int j = x2; j < 0; j++) { 
+				x1++;
+			}
+		}
+		int res = x1;
+
+		return res;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int res = 0;
+		
+		if (x1 < 0 && x2 < 0) {
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
+		
+			for (int i = 0; i < x2; i++) {
+				int c = plus(x1, res);
+				res = c;
+			}
+		}
+		else {
+			for (int i = 0; i < x2; i++) {
+				int c = plus(x1, res);
+				res = c;
+			}
+		}
+		return res;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int base = x;
+		int power = n;
+		int res = 1;
+
+		if (x < 0 && mod(n, 2) == 0) {
+			for (int i = 0; i < power; i++) {
+				int c = times(base, res);
+				res = c;
+			}
+			return res = minus(0, res);
+		}
+		else {
+			for (int i = 0; i < power; i++) {
+				int c = times(base, res);
+				res = c;
+			}
+		}
+		
+		return res;
 	}
 
-	// Returns the integer part of x1 / x2 
+	// Returns the integer part of x1 / x2
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int nominator = x1;
+		int denominator = x2;
+		int counter = 0;
+
+		if (nominator < 0 && denominator < 0) {
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
+			
+			while (minus(nominator, denominator) <= 0) {
+				int c = minus(nominator, denominator); 
+				nominator = c; 
+				counter++;
+			}
+		}
+		if (nominator < 0 && denominator > 0) {
+			while (plus(nominator, denominator) >= 0) {
+				int c = plus(nominator, denominator); 
+				nominator = c;
+				counter++;
+			}
+		}
+		if (nominator > 0 && denominator > 0) {
+			while (minus(nominator, denominator) >= 0) {
+				int c = minus(nominator, denominator); 
+				nominator = c;
+				counter++;
+			}
+		}
+		return counter;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int nominator = x1;
+		int denominator = x2;
+		
+		while(minus(nominator, denominator) >= 0) {
+			int c = minus(nominator, denominator); 
+			nominator = c;
+		}
+
+		return nominator;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
-	}	  	  
+		int res = 0;
+
+		if (x == 0) {
+			return 0;
+		}
+		while (times(res, res) <= x) {
+			res = plus(res, 1);
+		}
+		res = minus(res, 1);
+
+
+		return res;  
+	}	  
 }
