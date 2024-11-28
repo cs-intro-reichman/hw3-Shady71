@@ -9,6 +9,7 @@ public class Anagram {
 
 		// Tests the preProcess function.
 		System.out.println(preProcess("What? No way!!!"));
+		System.out.println(preProcess("I am a weakish speller"));
 		
 		// Tests the randomAnagram function.
 		System.out.println("silent and " + randomAnagram("silent") + " are anagrams.");
@@ -72,11 +73,11 @@ public class Anagram {
 			int randomIndex = (int) (Math.random() * str.length());
 			char randomCharacter = str.charAt(randomIndex);
 			newString += randomCharacter;
-
-			if (isAnagram(str, newString)) {
-				break;
-			}
 		}
-		return newString;
+		if (isAnagram(str, newString)) {
+			return newString;
+		}
+
+		return newString ;
 	}
 }
